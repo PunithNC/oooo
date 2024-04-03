@@ -1,0 +1,32 @@
+package ravir;
+import java.sql.*;
+public class exp13 {
+public static void main(String[]args)
+throws Exception{
+	Class.forName("com.mysql.cj.jdbc.Driver");
+	Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/studentt","root","JSSpolytechnic@123");
+	Statement stmt=con.createStatement();
+	int r=stmt.executeUpdate("insert into student values(6,'luffy')");
+	System.out.println("successfully inserted");
+	con.close();
+}
+}
+
+
+package ravir;
+import java.sql.*;
+public class exp13b {
+public static void main(String[]args)
+throws Exception{
+	Class.forName("com.mysql.cj.jdbc.Driver");
+	Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/studentt","root","JSSpolytechnic@123");
+	Statement stmt=con.createStatement();
+	ResultSet rs=stmt.executeQuery("select * from student");
+	System.out.println("rollno\t name");
+	while(rs.next())
+	{
+		System.out.println(rs.getInt("rollno")+"\t"+rs.getString("studentname"));
+	}
+	con.close();
+}
+}
